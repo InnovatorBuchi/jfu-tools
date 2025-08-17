@@ -1,3 +1,4 @@
+/* ==== Global nav + helpers ==== */
 function navHTML(active){
   return `
 <header class="header">
@@ -11,63 +12,79 @@ function navHTML(active){
     </div>
     <nav class="menu">
       <a class="btn ${active==='home'?'primary':''}" href="/">Home</a>
-      <a class="btn ${active==='trauma'?'primary':''}" href="/trauma/">What Is Trauma?</a>
-      <a class="btn ${active==='check'?'primary':''}" href="/check/">Check Yourself</a>
-      <a class="btn ${active==='how'?'primary':''}" href="/how/">How Are You?</a>
-      <a class="btn ${active==='report'?'primary':''}" href="/report/">Report Tool</a>
       <a class="btn ${active==='evidence'?'primary':''}" href="/evidence/">Evidence Vault</a>
-      <a class="btn ${active==='journal'?'primary':''}" href="/journal/">Journal</a>
     </nav>
   </div>
 </header>`;
 }
 function mountNav(active){ document.body.insertAdjacentHTML('afterbegin', navHTML(active)); }
-function escapeHTML(s){return (s||'').replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));}
+function escapeHTML(s){return (s||'').replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));}
 
-/* Sample data */
-const publicEvidence=[{id:1,title:"Letter of Administration",category:"Legal Documents",uploadDate:"2024-01-25",fileType:"JPG",description:"Sample evidence item",imageUrl:"https://via.placeholder.com/400"}];
-const privateEvidence=[{id:1,title:"Private Forensic Report",category:"Technical Evidence",uploadDate:"2024-01-20",fileType:"PDF",hash:"a1b2c3",fileName:"report.pdf"}];
-
-/* Evidence Vault */
-function initEvidence(){
-  const pub=document.getElementById('public-vault');
-  if(pub){
-    pub.innerHTML='';
-    publicEvidence.forEach(item=>{
-      const card=document.createElement('article'); card.className='card';
-      card.innerHTML=`<div class="card-b"><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.description)}</p></div>`;
-      pub.appendChild(card);
-    });
+/* ==== Evidence data (no raw URLs shown on the page) ====
+   - Each item has a "safeLink" like /open/01 which we map to a real Base44 URL below.
+   - You ONLY edit the linkMap at the bottom to insert your real Base44 links.
+*/
+const publicEvidence = [
+  {
+    id: 1,
+    title: "Letter of Administration - Legal Fraud Foundation",
+    description: "2004 Letters of Administration limited to 'personal property'—used to control landed assets.",
+    safeLink: "/open/01"
+  },
+  {
+    id: 2,
+    title: "The Vanished White House Letter (2013)",
+    description: "Letter acknowledging Onyebuchi Ugwu—disappeared shortly after delivery.",
+    safeLink: "/open/02"
+  },
+  {
+    id: 3,
+    title: "MOU: Clyvia GmbH & Bulwark Project (€600K Commission)",
+    description: "Binding MOU establishing 10% commission—clear financial motive for erasure.",
+    safeLink: "/open/03"
   }
+  // 👉 Add more items later by copying the pattern above; only the safeLink changes.
+];
+
+/* ==== Render Evidence Vault cards (with clean buttons) ==== */
+function initEvidence(){
+  const pub = document.getElementById('public-vault');
+  if(!pub) return;
+  pub.innerHTML = '';
+  publicEvidence.forEach(item=>{
+    const card = document.createElement('article'); card.className='card';
+    card.innerHTML = `
+      <div class="card-b">
+        <h3 style="margin:2px 0">${escapeHTML(item.title)}</h3>
+        <p class="small" style="margin:6px 0">${escapeHTML(item.description||'')}</p>
+        <a class="btn primary" href="${item.safeLink}">View Evidence</a>
+      </div>
+    `;
+    pub.appendChild(card);
+  });
 }
 
-/* Report Tool */
-const RKEY='jfu_reports_v1';
-function initReport(){
-  const t=document.getElementById('r-title'); if(!t) return;
-  const c=document.getElementById('r-cat'); const b=document.getElementById('r-body');
-  const msg=document.getElementById('r-msg'); const box=document.getElementById('r-list');
-  document.getElementById('r-save').onclick=()=>{
-    const rec={id:Date.now(),title:t.value,category:c.value,body:b.value,created:new Date().toISOString()};
-    if(!rec.title||!rec.body){msg.textContent='Required fields missing';return;}
-    const list=JSON.parse(localStorage.getItem(RKEY)||'[]'); list.unshift(rec);
-    localStorage.setItem(RKEY,JSON.stringify(list)); msg.textContent='Saved'; render();
-  };
-  function render(){const list=JSON.parse(localStorage.getItem(RKEY)||'[]');box.innerHTML='';list.forEach(it=>{box.innerHTML+=`<div class="card"><div class="card-b"><b>${escapeHTML(it.title)}</b><br/>${escapeHTML(it.body)}</div></div>`});}
-  render();
-}
+/* ==== Safe redirect map (you ONLY edit the RIGHT side values) ====
+   Replace the example URLs with your actual Base44 links.
+   The FBI (or anyone) clicks /open/01 on your site → instant redirect to Base44.
+*/
+const linkMap = {
+  "/open/01": "https://YOUR-BASE44-LINK-1", // <-- paste the real Base44 URL here
+  "/open/02": "https://YOUR-BASE44-LINK-2", // <-- paste the real Base44 URL here
+  "/open/03": "https://YOUR-BASE44-LINK-3"  // <-- paste the real Base44 URL here
+  // add more: "/open/04": "https://your-next-base44-link"
+};
 
-/* Journal */
-const JKEY='jfu_journal_v1';
-function initJournal(){
-  const t=document.getElementById('j-title'); if(!t) return;
-  const b=document.getElementById('j-body'); const msg=document.getElementById('j-msg'); const box=document.getElementById('j-list');
-  document.getElementById('j-save').onclick=()=>{
-    const rec={id:Date.now(),title:t.value||'Untitled',body:b.value,created:new Date().toISOString()};
-    if(!rec.body){msg.textContent='Write something first';return;}
-    const list=JSON.parse(localStorage.getItem(JKEY)||'[]'); list.unshift(rec);
-    localStorage.setItem(JKEY,JSON.stringify(list)); msg.textContent='Saved'; render();
-  };
-  function render(){const list=JSON.parse(localStorage.getItem(JKEY)||'[]');box.innerHTML='';list.forEach(it=>{box.innerHTML+=`<div class="card"><div class="card-b"><b>${escapeHTML(it.title)}</b><br/>${escapeHTML(it.body)}</div></div>`});}
-  render();
-}
+/* ==== Immediate redirect handler ==== */
+(function(){
+  const path = window.location.pathname.replace(/\/+$/,'/'); // ensure trailing slash normalized
+  // Allow both /open/01 and /open/01/ to work:
+  const key = path.endsWith('/') ? path.slice(0,-1) : path;
+  if (linkMap[key]) {
+    window.location.replace(linkMap[key]);
+  }
+})();
+
+/* ==== No-op stubs to avoid console errors on other pages ==== */
+function initReport() {}
+function initJournal() {}
