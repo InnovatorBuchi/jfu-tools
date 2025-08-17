@@ -1,0 +1,16 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"/><title>Report Tool</title>
+<link rel="stylesheet" href="/assets/style.css"></head><body>
+<script src="/assets/app.js"></script><script>mountNav("report");</script>
+<main class="page">
+  <section class="hero"><h1>Report Tool</h1></section>
+  <section class="card"><div class="card-b">
+    <input id="r-title" class="input" placeholder="Title"/><br/><br/>
+    <select id="r-cat" class="input"><option>Category</option><option>Fraud</option><option>Harassment</option></select><br/><br/>
+    <textarea id="r-body" class="input" placeholder="Details"></textarea><br/><br/>
+    <button class="btn primary" id="r-save">Save</button>
+    <div id="r-msg"></div>
+  </div></section>
+  <section class="card"><div class="card-b" id="r-list"></div></section>
+</main>
+<script>initReport();</script>
+</body></html>
