@@ -1,188 +1,68 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Justice For Ugwu Tools</title>
-
-  <!-- Favicon -->
-  <link rel="icon" href="/Public/favicon.ico" />
-
-  <!-- Basic theme color -->
-  <meta name="theme-color" content="#13b8a6" />
-
-  <style>
-    :root{
-      --bg:#f6fbfe; --panel:#ffffff; --text:#0b2239; --muted:#5b7288;
-      --brand:#13b8a6; --stroke:#e6eef4; --danger:#fce7e7; --case:#e43d3d;
-      --shadow:0 8px 28px rgba(16,24,40,.10);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;line-height:1.45}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1100px;margin:0 auto;padding:20px}
-
-    /* Top bar + nav */
-    .topbar{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--stroke)}
-    .topbar .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
-    .shield{width:20px;height:20px;border-radius:6px;border:2px solid var(--brand);position:relative}
-    .shield:after{content:"";position:absolute;inset:4px;border-radius:4px;background:var(--brand)}
-    .quick-exit{background:var(--case);color:#fff;border:none;border-radius:10px;padding:8px 12px;font-weight:700;cursor:pointer}
-    .nav{display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:center;padding:6px 10px;border-top:1px solid var(--stroke)}
-    .nav a{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid var(--stroke);background:#fff;font-weight:600}
-    .nav a:hover{filter:brightness(.98)}
-
-    /* Hero */
-    .hero{margin:24px 0;background:linear-gradient(180deg,#eaf6ff,#ecfbf8);border:1px solid var(--stroke);border-radius:24px;box-shadow:var(--shadow);padding:32px 22px;text-align:center}
-    .hero h1{margin:0 0 10px;font-size:36px}
-    @media (min-width:760px){.hero h1{font-size:44px}}
-    .hero .sub{margin:6px 0 18px;color:#475569;font-style:italic}
-    .cta-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;border:2px solid transparent;font-weight:700;cursor:pointer;background:#fff}
-    .btn-outline{border-color:#4aa89d;color:#0f766e}
-    .btn-ghost{border-color:var(--stroke)}
-    .btn-case{background:var(--case);color:#fff;border-color:transparent;padding:14px 22px;font-size:18px;box-shadow:0 6px 18px rgba(228,61,61,.35)}
-
-    /* Section title */
-    .section-title{font-size:24px;font-weight:900;text-align:center;margin:28px 0 16px;color:#065f46}
-
-    /* Cards grid */
-    .grid{display:grid;gap:16px}
-    @media(min-width:680px){.grid{grid-template-columns:repeat(2,1fr)}}
-    .card{background:#fff;border:1px solid var(--stroke);border-radius:18px;box-shadow:var(--shadow);padding:18px}
-    .card h3{margin:6px 0 8px}
-    .pill{display:inline-flex;align-items:center;gap:8px;background:#f4faff;border:1px solid #d9e9f7;color:#1d4e7a;border-radius:999px;padding:8px 12px;font-weight:700}
-
-    /* Video */
-    .video-card{background:#fff;border:1px solid var(--stroke);border-radius:20px;box-shadow:var(--shadow);padding:16px}
-    .video{position:relative;width:100%;max-width:900px;margin:0 auto}
-    .video:before{content:"";display:block;padding-top:56.25%}
-    .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px}
-
-    /* Panels */
-    .panel{background:#fff;border:1px solid var(--stroke);border-radius:18px;box-shadow:var(--shadow);padding:22px;margin:26px 0}
-    .help{background:var(--danger);border:1px solid #f7b9b9}
-
-    /* Footer */
-    footer{padding:28px 0 40px;text-align:center;color:#0f766e}
-    footer .links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:8px}
-    .hr{height:1px;background:var(--stroke);margin:18px 0}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Justice for Ugwu — Home</title>
+<link rel="icon" href="/Public/favicon.ico" />
+<style>
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f6fbfe;color:#0b2239}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:20px}
+  .top{position:sticky;top:0;background:#fff;border-bottom:1px solid #e6eef4;z-index:10}
+  .row{display:flex;justify-content:space-between;align-items:center;padding:12px 16px}
+  .nav{display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid #e6eef4;padding:8px 12px}
+  .nav a{padding:6px 10px;border:1px solid #e6eef4;border-radius:999px;background:#fff;font-weight:600}
+  .hero{margin:24px 0;background:linear-gradient(180deg,#eaf6ff,#ecfbf8);border:1px solid #e6eef4;border-radius:18px;padding:28px;text-align:center}
+  .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{padding:12px 16px;border-radius:12px;font-weight:700;border:2px solid transparent;background:#fff}
+  .btn-primary{background:#e43d3d;color:#fff}
+  .section{font-weight:900;font-size:24px;text-align:center;margin:24px 0 12px}
+  .video{position:relative;max-width:900px;margin:0 auto}
+  .video::before{content:"";display:block;padding-top:56.25%}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px}
+  footer{margin:30px 0;text-align:center;color:#0f766e}
+</style>
 </head>
 <body>
-  <!-- HEADER + NAV -->
-  <div class="topbar">
+  <header class="top">
     <div class="row wrap">
-      <div class="brand"><span class="shield" aria-hidden="true"></span> Justice for Ugwu — Tools</div>
-      <button class="quick-exit" onclick="(function(){try{location.replace('https://www.weather.com/')}catch(e){location.href='https://www.weather.com/'}})()">Quick Exit</button>
+      <strong>Justice for Ugwu</strong>
+      <button onclick="location.href='https://www.weather.com/'" style="background:#e43d3d;color:#fff;border:none;border-radius:10px;padding:8px 12px;font-weight:700;cursor:pointer">Quick Exit</button>
     </div>
     <nav class="nav wrap" aria-label="Primary">
-      <a href="#trauma">Trauma</a>
-      <a href="#safety">Safety Check</a>
-      <a href="#risk">Risk</a>
-      <a href="#report">Report Tool</a>
-      <a href="#evidence">Evidence</a>
-      <a href="#journal">Journal</a>
-      <a href="#case">Case File</a>
-      <a href="#contact">Contact</a>
+      <a href="/">Home</a>
+      <a href="/trauma">What Is Trauma?</a>
+      <a href="/safety">Check Yourself</a>
+      <a href="/risk">How Are You?</a>
+      <a href="/report">Report Tool</a>
+      <a href="/evidence">Evidence Vault</a>
+      <a href="/journal">Journal</a>
     </nav>
-  </div>
+  </header>
 
-  <!-- HERO -->
-  <div class="wrap" id="home">
+  <main class="wrap">
     <section class="hero">
-      <h1>Justice For Ugwu: Survivor Tools Hub</h1>
-      <p class="sub">Confidential, safe, and survivor-led tools for healing and justice.</p>
-      <div class="cta-row">
-        <a class="btn btn-case" href="#case">Open Case File</a>
-        <a class="btn btn-outline" href="#risk">Check Risk</a>
-        <a class="btn btn-outline" href="#trauma">Understand Trauma</a>
+      <h1>Justice For Ugwu:<br/>A Survivor's Platform for Truth and Tools</h1>
+      <p style="font-style:italic;color:#475569">“I was trafficked. I was erased. I fought back—with proof.”</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="/case">View My Case File</a>
+        <a class="btn" href="/risk">Identify Risk</a>
+        <a class="btn" href="/trauma">Understand Trauma</a>
       </div>
     </section>
 
-    <!-- VIDEO -->
-    <h2 class="section-title">Hear the Story</h2>
-    <div class="video-card">
-      <div class="video">
-        <iframe
-          src="https://www.youtube.com/embed/bFMg-sz_nss?si=DkLaIeVIBGRXDqGg"
-          title="Justice For Ugwu — video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen>
-        </iframe>
-      </div>
+    <h2 class="section">My Story: From Survivor to Advocate</h2>
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/bFMg-sz_nss"
+        title="Justice For Ugwu — video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
+  </main>
 
-    <!-- TOOLS -->
-    <h2 class="section-title">Tools for Survivors</h2>
-    <div class="grid">
-      <article class="card" id="trauma">
-        <div class="pill">• Trauma Screener</div>
-        <h3>Confidential self-assessment to understand your experiences</h3>
-        <a class="btn btn-ghost" href="#trauma-screener">Take Assessment</a>
-      </article>
-      <article class="card" id="safety">
-        <div class="pill">• Safety Check-In</div>
-        <h3>Quick, safe way to assess how you're feeling right now</h3>
-        <a class="btn btn-ghost" href="#safety">Check In Now</a>
-      </article>
-      <article class="card" id="report">
-        <div class="pill">• Report Builder</div>
-        <h3>Organize your story in a trauma-informed way</h3>
-        <a class="btn btn-ghost" href="#report">Start Report</a>
-      </article>
-      <article class="card" id="journal">
-        <div class="pill">• Private Journal</div>
-        <h3>Safe space for your thoughts (stored locally only)</h3>
-        <a class="btn btn-ghost" href="#journal">Open Journal</a>
-      </article>
-      <article class="card" id="evidence">
-        <div class="pill">• Evidence Vault</div>
-        <h3>Store and review your supporting documents</h3>
-        <a class="btn btn-ghost" href="#evidence">Go to Vault</a>
-      </article>
-      <article class="card" id="case">
-        <div class="pill">• Case File</div>
-        <h3>Full case record for independent review</h3>
-        <a class="btn btn-ghost" href="#case">Open Case File</a>
-      </article>
-      <article class="card" id="contact">
-        <div class="pill">• Secure Contact</div>
-        <h3>Send an encrypted, discreet message</h3>
-        <a class="btn btn-ghost" href="#contact">Contact Now</a>
-      </article>
-    </div>
-
-    <!-- HELP -->
-    <section class="panel help" aria-labelledby="helpNow">
-      <h2 id="helpNow" class="section-title" style="margin-top:0;color:#991b1b">Need Help Right Now?</h2>
-      <div class="grid">
-        <div class="card" style="border-color:#f4caca">
-          <b>Crisis Text Line</b><br/>Text <b>HOME</b> to <b>741741</b>
-        </div>
-        <div class="card" style="border-color:#f4caca">
-          <b>Suicide & Crisis Lifeline</b><br/>Call or Text <b>988</b>
-        </div>
-        <div class="card" style="border-color:#f4caca">
-          <b>Human Trafficking Hotline</b><br/><b>1-888-373-7888</b>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-      <div class="hr"></div>
-      <p>This site does not track or advertise. It exists to empower and protect.</p>
-      <div class="links">
-        <a href="#home">Home</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <p style="margin-top:8px;color:#7aa7c7">"Trauma doesn't define you. Truth empowers you. Justice heals communities."</p>
-    </footer>
-  </div>
+  <footer>
+    <p>This site does not track or advertise. It exists to empower and protect.</p>
+    <p style="color:#7aa7c7;margin-top:8px">"Trauma doesn't define you. Truth empowers you. Justice heals communities."</p>
+  </footer>
 </body>
 </html>
