@@ -1,24 +1,23 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Evidence Vault • JusticeForUgwu</title>
-<link rel="stylesheet" href="/assets/style.css">
-</head><body>
-<script src="/assets/app.js"></script>
-<script>mountNav("evidence");</script>
-
-<main class="page">
-  <section class="hero">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Evidence Vault</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script defer src="/assets/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      mountNav('evidence');
+      initEvidence();
+    });
+  </script>
+</head>
+<body>
+  <main class="page">
     <h1>Evidence Vault</h1>
-    <p>These are clean, safe links. Clicking a button redirects behind the scenes to the source record.</p>
-  </section>
-
-  <section class="card">
-    <div class="card-h"><h3 style="margin:2px 0">Public Evidence</h3></div>
-    <div class="card-b">
-      <div id="public-vault" class="grid cols-3"></div>
-    </div>
-  </section>
-</main>
-
-<script>initEvidence();</script>
-</body></html>
+    <p class="small">Click any item to view the source record. Links are masked.</p>
+    <section id="public-vault" class="grid cols-3"></section>
+  </main>
+</body>
+</html>

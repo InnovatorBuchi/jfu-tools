@@ -1,27 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Justice For Ugwu</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JusticeForUgwu.org</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script defer src="/assets/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      mountNav('home');
+    });
+  </script>
 </head>
 <body>
-  <header>
-    <h1>JusticeForUgwu.org</h1>
-    <p>Trauma-informed platform for evidence & truth</p>
-    <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="evidence/index.html">Evidence Vault</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <h2>“I was trafficked. I was erased. I fought back — with proof.”</h2>
+  <main class="page">
+    <section class="hero card">
+      <h1>“I was trafficked. I was erased. I fought back — with proof.”</h1>
       <p>This site exists to empower and protect. No tracking. No ads.</p>
-      <a href="evidence/index.html" class="button">View My Case File</a>
+      <div class="cta">
+        <a class="btn primary" href="/evidence/">Evidence Vault</a>
+      </div>
     </section>
   </main>
+  <footer class="footer small">© JusticeForUgwu.org</footer>
 </body>
 </html>
